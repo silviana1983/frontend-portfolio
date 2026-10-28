@@ -1,4 +1,5 @@
 import ProjectCard from "./ProjectCard.jsx";
+import TaskTracker from "./TaskTracker.jsx";
 
 const projects = [
   {
@@ -51,6 +52,8 @@ function App() {
           />
         ))}
       </section>
+
+      <TaskTracker />
 
       <section>
         <h2>My Skills</h2>

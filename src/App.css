@@ -92,3 +92,18 @@ article:hover {
 .projects-section h2 {
   grid-column: 1 / -1;
 }
+
+.filter-button {
+  padding: 0.5rem 0.9rem;
+  margin-right: 0.5rem;
+  border: 1px solid #315b4c;
+  border-radius: 6px;
+  background-color: transparent;
+  color: #315b4c;
+  cursor: pointer;
+}
+
+.filter-button.selected {
+  background-color: #315b4c;
+  color: white;
+}
