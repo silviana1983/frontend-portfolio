@@ -1,8 +1,7 @@
 import { useState } from "react";
 
-function TaskTracker({ onBack }) {
+function TaskTracker({ onBack, tasks, setTasks }) {
   const [task, setTask] = useState("");
-  const [tasks, setTasks] = useState([]);
   const [filter, setFilter] = useState("all");
   const remainingTasks = tasks.filter((item) => !item.completed).length;
   const totalTasks = tasks.length;
@@ -14,22 +13,22 @@ function TaskTracker({ onBack }) {
   });
 
   function toggleTask(id) {
-    setTasks(
-      tasks.map((item) =>
+    setTasks((previousTasks) =>
+      previousTasks.map((item) =>
         item.id === id ? { ...item, completed: !item.completed } : item,
       ),
     );
   }
 
   function deleteTask(id) {
-    setTasks(tasks.filter((item) => item.id !== id));
+    setTasks((previousTasks) => previousTasks.filter((item) => item.id !== id));
   }
 
   function addTask() {
     if (task.trim() === "") return;
 
-    setTasks([
-      ...tasks,
+    setTasks((previousTasks) => [
+      ...previousTasks,
       {
         id: Date.now(),
         text: task.trim(),
@@ -76,10 +75,8 @@ function TaskTracker({ onBack }) {
       </button>
 
       <p>
-        <p>
-          {totalTasks} {totalTasks === 1 ? "task" : "tasks"} · {remainingTasks}{" "}
-          {remainingTasks === 1 ? "task" : "tasks"} remaining
-        </p>
+        {totalTasks} {totalTasks === 1 ? "task" : "tasks"} · {remainingTasks}{" "}
+        {remainingTasks === 1 ? "task" : "tasks"} remaining
       </p>
 
       <input

@@ -29,6 +29,7 @@ const projects = [
 
 function App() {
   const [showTaskTracker, setShowTaskTracker] = useState(false);
+  const [tasks, setTasks] = useState([]);
   return (
     <main>
       <h1>Hi, I'm Silvia Flórez! 🌷</h1>
@@ -59,7 +60,11 @@ function App() {
       </section>
 
       {showTaskTracker && (
-        <TaskTracker onBack={() => setShowTaskTracker(false)} />
+        <TaskTracker
+          tasks={tasks}
+          setTasks={setTasks}
+          onBack={() => setShowTaskTracker(false)}
+        />
       )}
 
       <section>
