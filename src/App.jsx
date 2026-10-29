@@ -1,3 +1,4 @@
+import { useState } from "react";
 import ProjectCard from "./ProjectCard.jsx";
 import TaskTracker from "./TaskTracker.jsx";
 
@@ -27,6 +28,7 @@ const projects = [
 ];
 
 function App() {
+  const [showTaskTracker, setShowTaskTracker] = useState(false);
   return (
     <main>
       <h1>Hi, I'm Silvia Flórez! 🌷</h1>
@@ -46,6 +48,9 @@ function App() {
         {projects.map((project) => (
           <ProjectCard
             key={project.id}
+            onClick={
+              project.id === 1 ? () => setShowTaskTracker(true) : undefined
+            }
             title={project.title}
             description={project.description}
             technologies={project.technologies}
@@ -53,7 +58,9 @@ function App() {
         ))}
       </section>
 
-      <TaskTracker />
+      {showTaskTracker && (
+        <TaskTracker onBack={() => setShowTaskTracker(false)} />
+      )}
 
       <section>
         <h2>My Skills</h2>

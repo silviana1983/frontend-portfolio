@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function TaskTracker() {
+function TaskTracker({ onBack }) {
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState([]);
   const [filter, setFilter] = useState("all");
@@ -42,6 +42,7 @@ function TaskTracker() {
 
   return (
     <section>
+      <button onClick={onBack}>Back to Projects</button>
       <h2>Interactive Task Tracker</h2>
 
       <button

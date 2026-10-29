@@ -1,6 +1,6 @@
-function ProjectCard({ title, description, technologies }) {
+function ProjectCard({ title, description, technologies, onClick }) {
   return (
-    <article>
+    <article onClick={onClick}>
       <h3>{title}</h3>
       <p>{description}</p>
       <p>Technologies: {technologies}</p>
