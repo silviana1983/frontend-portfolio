@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProjectCard from "./ProjectCard.jsx";
 import TaskTracker from "./TaskTracker.jsx";
 
@@ -29,7 +29,16 @@ const projects = [
 
 function App() {
   const [showTaskTracker, setShowTaskTracker] = useState(false);
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(() => {
+    const savedTasks = localStorage.getItem("tasks");
+
+    return savedTasks ? JSON.parse(savedTasks) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
+
   return (
     <main>
       <h1>Hi, I'm Silvia Flórez! 🌷</h1>
