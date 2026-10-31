@@ -12,6 +12,16 @@ function TaskTracker({ onBack, tasks, setTasks }) {
     return true;
   });
 
+  let emptyMessage = "";
+
+  if (filter === "all") {
+    emptyMessage = "No tasks yet. Add your first task!";
+  } else if (filter === "active") {
+    emptyMessage = "No active tasks. Everything is done!";
+  } else if (filter === "completed") {
+    emptyMessage = "No completed tasks yet.";
+  }
+
   function toggleTask(id) {
     setTasks((previousTasks) =>
       previousTasks.map((item) =>
@@ -92,26 +102,30 @@ function TaskTracker({ onBack, tasks, setTasks }) {
       />
 
       <button onClick={addTask}>Add task</button>
-      <ul>
-        {filteredTasks.map((item) => (
-          <li key={item.id}>
-            <input
-              type="checkbox"
-              checked={item.completed}
-              onChange={() => toggleTask(item.id)}
-            />
-            <span
-              style={{
-                textDecoration: item.completed ? "line-through" : "none",
-              }}
-            >
-              {item.text}
-            </span>
+      {filteredTasks.length > 0 ? (
+        <ul>
+          {filteredTasks.map((item) => (
+            <li key={item.id}>
+              <input
+                type="checkbox"
+                checked={item.completed}
+                onChange={() => toggleTask(item.id)}
+              />
+              <span
+                style={{
+                  textDecoration: item.completed ? "line-through" : "none",
+                }}
+              >
+                {item.text}
+              </span>
 
-            <button onClick={() => deleteTask(item.id)}>Delete</button>
-          </li>
-        ))}
-      </ul>
+              <button onClick={() => deleteTask(item.id)}>Delete</button>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>{emptyMessage}</p>
+      )}
     </section>
   );
 }
