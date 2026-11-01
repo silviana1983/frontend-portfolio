@@ -6,6 +6,8 @@ function TaskTracker({ onBack, tasks, setTasks }) {
   const remainingTasks = tasks.filter((item) => !item.completed).length;
   const totalTasks = tasks.length;
 
+  const completedTasks = tasks.filter((item) => item.completed).length;
+
   const filteredTasks = tasks.filter((item) => {
     if (filter === "active") return !item.completed;
     if (filter === "completed") return item.completed;
@@ -32,6 +34,12 @@ function TaskTracker({ onBack, tasks, setTasks }) {
 
   function deleteTask(id) {
     setTasks((previousTasks) => previousTasks.filter((item) => item.id !== id));
+  }
+
+  function clearCompletedTasks() {
+    setTasks((previousTasks) =>
+      previousTasks.filter((item) => !item.completed),
+    );
   }
 
   function addTask() {
@@ -102,6 +110,10 @@ function TaskTracker({ onBack, tasks, setTasks }) {
       />
 
       <button onClick={addTask}>Add task</button>
+      {completedTasks > 0 && (
+        <button onClick={clearCompletedTasks}>Clear completed tasks</button>
+      )}
+
       {filteredTasks.length > 0 ? (
         <ul>
           {filteredTasks.map((item) => (
