@@ -7,7 +7,8 @@ function TaskTracker({ onBack, tasks, setTasks }) {
   const totalTasks = tasks.length;
 
   const completedTasks = tasks.filter((item) => item.completed).length;
-
+  const completionPercentage =
+    totalTasks === 0 ? 0 : Math.round((completedTasks / totalTasks) * 100);
   const filteredTasks = tasks.filter((item) => {
     if (filter === "active") return !item.completed;
     if (filter === "completed") return item.completed;
@@ -96,6 +97,8 @@ function TaskTracker({ onBack, tasks, setTasks }) {
         {totalTasks} {totalTasks === 1 ? "task" : "tasks"} · {remainingTasks}{" "}
         {remainingTasks === 1 ? "task" : "tasks"} remaining
       </p>
+
+      <p>{completionPercentage}% completed</p>
 
       <input
         type="text"
