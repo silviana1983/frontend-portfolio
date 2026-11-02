@@ -98,7 +98,23 @@ function TaskTracker({ onBack, tasks, setTasks }) {
         {remainingTasks === 1 ? "task" : "tasks"} remaining
       </p>
 
-      <p>{completionPercentage}% completed</p>
+      <div className="progress-section">
+        <p aria-live="polite">{completionPercentage}% completed</p>
+
+        <div
+          className="progress-bar"
+          role="progressbar"
+          aria-valuenow={completionPercentage}
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-label="Task completion progress"
+        >
+          <div
+            className="progress-bar-fill"
+            style={{ width: `${completionPercentage}%` }}
+          ></div>
+        </div>
+      </div>
 
       <input
         type="text"
@@ -125,6 +141,7 @@ function TaskTracker({ onBack, tasks, setTasks }) {
                 type="checkbox"
                 checked={item.completed}
                 onChange={() => toggleTask(item.id)}
+                aria-label={item.text}
               />
               <span
                 style={{
