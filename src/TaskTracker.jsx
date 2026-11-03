@@ -151,7 +151,12 @@ function TaskTracker({ onBack, tasks, setTasks }) {
                 {item.text}
               </span>
 
-              <button onClick={() => deleteTask(item.id)}>Delete</button>
+              <button
+                onClick={() => deleteTask(item.id)}
+                aria-label={`Delete ${item.text}`}
+              >
+                Delete
+              </button>
             </li>
           ))}
         </ul>
