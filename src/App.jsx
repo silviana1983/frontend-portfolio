@@ -6,6 +6,7 @@ const projects = [
   {
     id: 1,
     title: "Interactive Task Tracker",
+    status: "Available",
     description:
       "A React application for organizing tasks and tracking progress through a simple, intuitive interface.",
     technologies: "React, JavaScript, CSS",
@@ -13,6 +14,7 @@ const projects = [
   {
     id: 2,
     title: "Personal Finance Dashboard",
+    status: "Coming Soon",
     description:
       "A web application for organizing expenses, monitoring budgets, and tracking personal finances.",
     technologies: "React, JavaScript, CSS, Chart.js",
@@ -21,6 +23,7 @@ const projects = [
   {
     id: 3,
     title: "Weather Dashboard",
+    status: "Coming Soon",
     description:
       "A web application for exploring weather conditions and displaying forecast information in a clear, user-friendly interface.",
     technologies: "React, JavaScript, CSS, Weather API",
@@ -64,6 +67,7 @@ function App() {
             title={project.title}
             description={project.description}
             technologies={project.technologies}
+            status={project.status}
           />
         ))}
       </section>

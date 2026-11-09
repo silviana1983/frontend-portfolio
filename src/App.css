@@ -77,6 +77,26 @@ article h3 {
   margin-top: 0;
 }
 
+.project-status {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.project-status.available {
+  background-color: #e6f4ec;
+  color: #237a4b;
+}
+
+.project-status.coming-soon {
+  background-color: #f0eef5;
+  color: #6b6375;
+}
+
 article p {
   margin-bottom: 16px;
 }
