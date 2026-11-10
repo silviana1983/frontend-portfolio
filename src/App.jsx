@@ -45,9 +45,9 @@ function App() {
   return (
     <main>
       <h1>Hi, I'm Silvia Flórez! 🌷</h1>
-      <p>Welcome to my frontend developer portfolio.</p>
+      <p className="intro-text">Welcome to my frontend developer portfolio.</p>
 
-      <section>
+      <section className="about-section">
         <h2>About Me</h2>
         <p>
           I'm a Systems Engineer passionate about building useful, accessible,
